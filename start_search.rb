@@ -11,6 +11,7 @@ require_relative 'Populator/populator'
 require_relative 'Curator/curator'
 require_relative 'Matcher/similarity_matcher'
 require_relative 'Output/output'
+require_relative 'Status/status'
 
 include UserConfiguration
 include TrelloConfiguration
@@ -24,24 +25,39 @@ member_name = UserConfiguration.member_name
 board_name = UserConfiguration.board_name
 similarity_value = UserConfiguration.similarity_value
 entered_name = Input.get
+@status = Status.new
 
-# Ask Populator to set the right board
-populator = Populator.new(member_name, board_name)
+main_thread = Thread.start {
+  # Ask Populator to set the right board
+  populator = Populator.new(member_name, board_name)
 
-# Populate lists in the selected board
-total_lists = populator.populate_lists
+  # Populate lists in the selected board
+  total_lists = populator.populate_lists
 
-# Exclude unwanted lists
-curator = Curator.new(total_lists)
-curated_lists = curator.curate_lists
+  # Exclude unwanted lists
+  curator = Curator.new(total_lists)
+  curated_lists = curator.curate_lists
 
-# Populate cards from selected lists
-card_list = populator.populate_cards(curated_lists)
+  # Populate cards from selected lists
+  card_list = populator.populate_cards(curated_lists)
 
-# Match entered text with curated cards using a similarity matching
-# Algorithm - here I am passing Levenshtein
-matcher = SimilarityMatcher.new(card_list)
-result = matcher.find_distance('levenshtein', entered_name, similarity_value)
+  # Match entered text with curated cards using a similarity matching
+  # Algorithm - here I am passing Levenshtein
+  matcher = SimilarityMatcher.new(card_list, @status)
+  result = matcher.find_distance('levenshtein', entered_name, similarity_value)
 
-# Display result to the user
-Output.display(result)
+  # Display result to the user
+  Output.display(result)
+}
+
+wait_thread = Thread.start {
+  Output.display_wait_message
+}
+
+wait_sub_thread = Thread.start {
+ Output.display_progress(@status)
+}
+
+main_thread.join
+wait_thread.join
+wait_sub_thread.join

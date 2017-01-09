@@ -1,9 +1,12 @@
-class SimilarityMatcher
-  attr_reader :card_list
+require_relative '../Status/status'
 
-  def initialize(card_list)
+class SimilarityMatcher
+  attr_reader :card_list, :result
+
+  def initialize(card_list, status)
     @card_list = card_list
     @result = []
+    @status = status
   end
 
   # Based on the passed in algorithm, return an array 
@@ -40,6 +43,7 @@ class SimilarityMatcher
         (@result << each_card[0] + " -- " + each_card[1].capitalize)  if length > 0
       end
     end
+    @status.complete?(true)
     @result
   end
 end

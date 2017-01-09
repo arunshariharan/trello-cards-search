@@ -7,4 +7,16 @@ class Output
       puts "\nNo cards match your title - Create a new one :)"
     end
   end
+
+  def self.display_wait_message
+    puts "\n"
+    print 'Your request is being processed. Please wait'
+  end
+
+  def self.display_progress(status)
+    until  status.result == true
+      print '.'
+      sleep(1)
+    end
+  end
 end
