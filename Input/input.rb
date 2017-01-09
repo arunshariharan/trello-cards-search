@@ -1,3 +1,4 @@
+require 'colorize'
 require_relative '../StopWords/stop_words'
 
 class Input
@@ -12,7 +13,7 @@ class Input
   
   # Get the card name that user intends to add
   def self.get_input
-    puts "Enter the card name you were about to type: "
+    puts "Enter the card name you were about to type: ".green
     gets.chomp
   end
 end
