@@ -1,0 +1,45 @@
+
+Valuation Brief and URLs
+--------------
+Prod Link
+
+General Valuation Tests
+--------------
+Payment section
+API Tests
+
+Other peoples tasks
+--------------
+Production - MO
+DNS - Mo
+Redirect - Jian/Mo
+
+Bugs
+--------------
+paypal notify_url is not getting invoked, when user finish purchase on paypal page
+cancel link on paypal
+
+Cross browser bugs
+--------------
+Validation for fields doesn't kick in in Firefox/ Chrome unless any data is entered in the first place
+IE -> Able to select Transmission/ body type values without selecting previous data such as Make or year.
+IE -> Alignment of landing page details
+
+Fixed Bugs
+--------------
+Kilometres should not accept decimals
+
+Suggestions / Enhancements
+--------------
+Incorrect Payment data is throws error - but logged as payment made in admin
+Highlight of icon after payment
+Have a button / Navigation that takes user to either redbook.com or to the valuation report page to start from first
+make whole option item clickable
+duplicated entries generated in database when credit card payment is unsuccesful
+
+All good to go
+--------------
+Select cars / Make Model etc
+Car details section
+Car condition section
+Confirmation section

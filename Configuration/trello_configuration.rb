@@ -2,8 +2,8 @@ module TrelloConfiguration
   extend self
   
   # Enter Trello specific information here
-  PUBLIC_KEY = 'YOUR PUBLIC KEY'
-  MEMBER_TOKEN = 'YOUR MEMBER TOKEN'
+  PUBLIC_KEY = ''
+  MEMBER_TOKEN = ''
 
   # Configure Trello keys and token
   def start

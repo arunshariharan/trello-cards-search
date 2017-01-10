@@ -6,7 +6,7 @@ class Output
     if result.size > 0
       puts "\n\n"
       puts "We found ".yellow + result.size.to_s.red + " cards that are similar \n\n".yellow
-      result.each {|each_result| puts each_result.green + "\n"}
+      result.each {|each_result| puts each_result[1].green + ' -- ' + each_result[0].green + "\n"}
     else
       puts "\n\n"
       puts "No cards match your title - Create a new one :)".green
@@ -25,10 +25,29 @@ class Output
     progressbar = ProgressBar.create(format:  '%t %p%%'.green, title: 'Complete -'.yellow, starting_at: rand_value, auto_finish: false)
     until  status.result == true
       progressbar.increment
-      sleep(1) if progressbar.progress > 90
+      sleep(1) if progressbar.progress > 80
       sleep(0.10)
     end
     puts "\n"
     progressbar.finish    
+  end
+
+  def self.display_hash(result)
+    puts "\n\n"
+    puts "We found ".yellow + result.size.to_s.red + " cards that are similar \n\n".yellow
+    File.open('Valuation_bugs.txt', 'w') { |file|
+      result.each do |key, value|
+        file.write("\n")
+        file.write(key)
+        file.write("\n")
+        file.write("--------------")
+        file.write("\n")
+        value.each {|each_value| 
+          file.write(each_value)
+          file.write("\n") 
+        }
+      end  
+    }
+    
   end
 end

@@ -1,0 +1,126 @@
+
+URLs and Brief - RedBook Warranty
+--------------
+RedBook Warranty URL
+What is RedBook Warranty?
+Product Rules Matrix
+Warranty Inspection Rules / Schedules
+RedBook Questionnaire API links
+
+APIs to test - Postman
+--------------
+RedBook Web - Read first
+Questionnaire API
+Warranty policy API
+Warranty Inspection API
+Get tests in the build
+API Tests from Postman
+
+Warranty Offer test cases
+--------------
+Test Warranty Inspection
+Pathways to warranty
+
+Warranty quote
+--------------
+Warranty Quote Email
+I need to think about it email not sent to email account. Fill out warranty and request a email back
+Test the order of webpage results
+
+Membership Integration
+--------------
+Test login
+Extra questions asked when logged in
+
+Bugs
+--------------
+t&c update on redbook.com.au
+Choose product page
+Step 6 needs validation
+Format change
+word change
+in warranty, on step 6 it asks for your actual odometer reading... what happens if you enter a value that is outside the odometer range you entered in step 2?  e.g. you say your car is 0-125,000km, but then your actual odometer is 156,000 ?  Will we validate this?
+Copy change
+spell check
+Move button
+Add email to thank you page
+IE > when selecting from dropdown, when it is covering the 'Find Vehicle' button, it is showing the blocker symbol while doing selection
+Purchase button is not activated automatically as the fields are completed
+Copy change - In all instances where an inspection is compulsory
+Entering invalid Credit card details results in infinite loading screen
+Link to video from FAQ
+
+RBW Membership Bugs
+--------------
+Trying to sign up with new email address shows user already exists and has inconsistent flow afterwards.
+Server error when trying to link accounts
+After user resets password via forgot password link, server error page displayed
+Able to login to redbook warranty using a account which is flagged as "Notme"
+RBW>Create account page>TC , privacy policy and member communication link do not work
+Visit member centre link on account verification url redirects to server error page as redbook does not have a dashboard (only mobi )
+Member account creation on redbook should trigger two emails . 1. Welcome email 2. Verify your account email
+
+Enhancement
+--------------
+return url gets lost on mobi when click on forgot password, and in the code it's checking if return url endswith 'app:' ?
+Unable to proceed after stepd 6 even after entering valid details. Seeing errors in console  that content not loading over https.
+Overlapping text and button when resizing window
+TC and privacy policy link on member verification url redirects to carsales sign in page (only mobi)
+RedBook Warranty/Inspection API > Postcode > 2898
+No option for user to sign out and log in as another person
+Calendar to enter DOB shows unclickable dates that are out of range
+Browser back button should also work when we want to go to previous page
+Where do I find my VIN?
+Alert to incorrect phone formatting and give an example of acceptable phone number
+we should have an error message or it should show red box when the mandatory fields are not selected
+Questionnaire > What date did you purchase car?
+iPad (iOS10) Safari : Get Warranty Quote/View Packages buttons don't scroll to proper form
+No check in rego,odometer and Vin
+No validation if first name and last name entered is numbers
+Improvement > Checkout page > Include RedBook Inspection if it's purchased together with the warranty
+Consider ability to tab between fields
+km validation
+Back button refreshes
+Additional services copy change
+full stop
+
+Fixed Bugs
+--------------
+Mobi > step 6> UI issue> Tick mark overlaps with state dropdown arrow.
+email quotes return url
+send quote email backend validation bug
+fail to purchase
+payOrder error propertyName
+Email the quotes
+Navigate from email to the purchase page / quote page
+5 Year warranty email does not have "Complete Purchase" option
+
+All good - good to go!!!
+--------------
+Test the Questionnaire
+Test with multiple brands of cars with same km and age range
+Test multiple cars of same brand with same km and price range
+Do smoke 200OK for all endpoints
+Test different pathways (combos) from questionnaire based on the Product Rules matrix . - No PreInspection Code provided scenarios
+Unable to proceed after step 5 when postcode address in step 5 does not match with postcode entered on step2. No validation displayed and user does not know what should be rectified on the page to proceed
+Unable to login or join using google plus account
+Unable to proceed after step5 due to postcode validation
+Sign in / sign up using Google+ throws 404 error
+Forgot password link does not trigger reset password email
+Create account on mobi redirects to error page
+Member creation does not trigger welcome email and email verification email
+Sign in on mobi redirects to error page. Same issue as create account
+
+Purchase Warranty - blocked
+--------------
+Payment Methods
+Terms and Conditions
+Purchase warranty page contains correct details of the selected car along with correct price as quoted in mail
+No inspection required - straight to OK email
+Inspection required - send "Inspection Booked" email and calls RBI api to book inspection
+Inspection Passed email
+Limited warranty email
+No warranty offered email
+Test refund option
+Able to see your purchased warranty details (no UI - but it should be present when queried for a user's details from api?)
+Test in multiple browsers

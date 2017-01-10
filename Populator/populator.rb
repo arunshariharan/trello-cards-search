@@ -8,6 +8,7 @@ class Populator
     @board_name = board_name
     @board_id = ''
     @total_lists, @card_list = [], []
+    @list_hash = {}
     @stopwords_filter = StopWords.get
     set_current_board
   end  
@@ -31,6 +32,21 @@ class Populator
       end
     end
     @card_list
+  end
+
+  def populate_cards_without_curation
+    @total_lists.size.times do |time|
+      list = Trello::List.find(@total_lists[time][1])
+      list.cards.each do |card|
+        if @list_hash[list.name] == nil
+          @list_hash[list.name] = [card.name]
+          next
+        end
+        @list_hash[list.name] << card.name
+        @card_list << [card.name, list.name] # Add the filtered card to the card_list
+      end
+    end
+    @list_hash
   end
 
   private

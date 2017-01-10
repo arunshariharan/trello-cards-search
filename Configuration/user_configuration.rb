@@ -5,8 +5,8 @@ module UserConfiguration
   attr_reader :name_of_list_to_exclude, :similarity_value
 
   # Enter user details here
-  MEMBER_NAME = 'YOUR TRELLO USER NAME'
-  BOARD_NAME = 'Warranty QA All-in'
+  MEMBER_NAME = ''
+  BOARD_NAME = 'Valuation QA All-in'
   NAME_OF_LIST_TO_INCLUDE = 'bugs'
   NAME_OF_LIST_TO_EXCLUDE = 'fixed'
   SIMILARITY_VALUE = 0.25

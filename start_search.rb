@@ -24,7 +24,7 @@ TrelloConfiguration.start
 member_name = UserConfiguration.member_name
 board_name = UserConfiguration.board_name
 similarity_value = UserConfiguration.similarity_value
-entered_name = Input.get
+#entered_name = Input.get
 @status = Status.new
 
 main_thread = Thread.start {
@@ -39,15 +39,18 @@ main_thread = Thread.start {
   curated_lists = curator.curate_lists
 
   # Populate cards from selected lists
-  card_list = populator.populate_cards(curated_lists)
+  #card_list = populator.populate_cards(curated_lists)
+  card_list = populator.populate_cards_without_curation
 
+  Output.display_hash(card_list)
+  @status.complete?(true)
   # Match entered text with curated cards using a similarity matching
   # Algorithm - here I am passing Levenshtein
-  matcher = SimilarityMatcher.new(card_list, @status)
-  result = matcher.find_distance('levenshtein', entered_name, similarity_value)
+  # matcher = SimilarityMatcher.new(card_list, @status)
+  # result = matcher.find_distance('levenshtein', entered_name, similarity_value)
 
-  # Display result to the user
-  Output.display(result)
+  # # Display result to the user
+  # Output.display(result)
 }
 
 wait_thread = Thread.start {
